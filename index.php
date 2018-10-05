@@ -29,7 +29,8 @@
 	 );
 	 
 	 // Loop through $people array and append persons to table...
-	 $start_table = "<table class='person_table'><thead><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Info</th></tr></thead>";
+	 $start_table = "<table class='person_table'><thead><tr><th>ID</th><th>First Name</th>
+								<th>Last Name</th><th>Email</th><th>Info</th></tr></thead>";
 	 $tr = "";
 	 foreach ($people as $personKey => $personVal ):
 		$tr.= "<tbody><tr><td>".$personVal['id']."</td>";
@@ -51,8 +52,9 @@
 			// Prevents DOM from bubbling on multiple clicks.
 			e.stopImmediatePropagation();
 			var $this = $(this);
-			// Another way of getting name and email could be assigning ids to first and last name td(s) as well as email td...eg <td id="fname_".$personVal['id']>
-			var name = $this.closest('tr').find('td:eq(1)').text() + ' ' + $this.closest('tr').find('td:eq(2)').text();
+			// Another way of getting name and email could be assigning ids to first and last name td(s) 
+			// as well as email td...eg <td id="fname_".$personVal['id']>
+			var name = $this.closest('tr').find('td:eq(1)').text() + ' ' +$this.closest('tr').find('td:eq(2)').text();
 			var email = $this.closest('tr').find('td:eq(3)').text();
 			alert(name +'   ............    '+ email);
 		});
