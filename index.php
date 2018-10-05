@@ -3,6 +3,13 @@
 	<head>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<title>eBASE Developer Application</title>
+	<style>
+		body { padding: 5% 20%; }
+		table { border-collapse: collapse; width: 100%; background: #f2f2f2;}
+		tr:hover {background-color: #f9f9f9;}
+		th {background-color: #666;color: white;}
+		th, td { padding: 8px;text-align: left; height: 20px; vertical-align: bottom;}
+	</style>
 	</head>
 	<body>
 	<?php
@@ -21,16 +28,16 @@
 	   array('id'=>5, 'first_name'=>'Doug', 'last_name'=>'Simons', 'email'=>'doug.simons@hotmail.com')
 	 );
 	 
-	 $start_table = "<table><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th></tr>";
+	 $start_table = "<table class='person_table'><thead><tr><th>ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Info</th></tr></thead>";
 	 $tr = "";
 	 foreach ($people as $personKey => $personVal ):
-		$tr.= "<tr><td>".$personVal['id']."</td>";
+		$tr.= "<tbody><tr><td>".$personVal['id']."</td>";
 		$tr.= "<td>".$personVal['first_name']."</td>";
 		$tr.= "<td>".$personVal['last_name']."</td>";
 		$tr.= "<td>".$personVal['email']."</td>";
 		$tr.= "<td><button class='person_info' id='".$personVal['id']."'>Info</button></td></tr>";
 	 endforeach;
-	 $end_table = "</table>";
+	 $end_table = "</tbody></table>";
 	 
 	 $table = $start_table.$tr.$end_table;
 	 echo $table;
@@ -42,10 +49,9 @@
 			e.stopImmediatePropagation();
 			var $this = $(this);
 			// Another way of getting name and email could be assigning ids to first and last name td(s) as well as email td...eg <td id="fname_".$personVal['id']>
-			// probably more robust..
 			var name = $this.closest('tr').find('td:eq(1)').text() + ' ' + $this.closest('tr').find('td:eq(2)').text();
 			var email = $this.closest('tr').find('td:eq(3)').text();
-			alert(name +'       '+ email);
+			alert(name +'   ............    '+ email);
 		});
 	</script>
 	</body>
